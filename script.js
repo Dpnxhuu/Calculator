@@ -21,7 +21,7 @@ function press(val) {
     input.value += val;
     if (input.value.length > 6) {
       input.style.fontSize = "40px";
-      if (input.value.length > 13) {
+      if (input.value.length >= 13) {
         input.style.fontSize = "24px";
       }
     }
@@ -34,8 +34,11 @@ function equal(val) {
     input.style.fontSize = "70px";
   } else if (val === "backspace") {
     input.value = input.value.slice(0, -1);
-    if (input.value.length < 7) {
-      input.style.fontSize = "70px";
+    if (input.value.length < 13) {
+      input.style.fontSize = "40px";
+      if (input.value.length < 7) {
+        input.style.fontSize = "70px";
+      }
     }
   } else if (val === "equal") {
     input.value = eval(input.value);
