@@ -18,6 +18,7 @@ body{
     width: 320px;
     padding: 20px 5px;
     height: 600px;
+    overflow: hidden;
 }
 
 #parent {
@@ -27,6 +28,7 @@ body{
     justify-content: center;
     align-items: center;
     gap: 5px;
+    overflow: hidden;
 }
 
 #input{
@@ -34,6 +36,7 @@ body{
     margin-bottom: 10px;
     width: 290px;
     outline: none;
+    overflow: hidden;
     border: 0px;
     background-color: transparent;
     color: white;
