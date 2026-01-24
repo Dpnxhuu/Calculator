@@ -41,7 +41,11 @@ function equal(val) {
       }
     }
   } else if (val === "equal") {
-    input.value = eval(input.value);
+    if (input.value === "") {
+      return;
+    } else {
+      input.value = eval(input.value);
+    }
   } else if (val === "-" && input.value[0] !== "-") {
     input.value = "-" + input.value;
   }
