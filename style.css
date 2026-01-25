@@ -108,5 +108,10 @@ button {
   -webkit-tap-highlight-color: transparent;
 }
 
+body{
+    height: 100vh;
+    width: 100vw;
+}
+
 }
 

@@ -19,34 +19,47 @@ function press(val) {
     return;
   } else {
     input.value += val;
-    if (input.value.length > 6) {
-      input.style.fontSize = "40px";
-      if (input.value.length >= 13) {
-        input.style.fontSize = "24px";
-      }
-    }
   }
+
+  change(input.value.length);
 }
 
 function equal(val) {
   if (val === "AC") {
     input.value = "";
-    input.style.fontSize = "70px";
+    change(0);
   } else if (val === "backspace") {
     input.value = input.value.slice(0, -1);
-    if (input.value.length < 13) {
-      input.style.fontSize = "40px";
-      if (input.value.length < 7) {
-        input.style.fontSize = "70px";
-      }
-    }
-  } else if (val === "equal") {
-    if (input.value === "") {
-      return;
-    } else {
-      input.value = eval(input.value);
-    }
+    change(input.value.length);
   } else if (val === "-" && input.value[0] !== "-") {
     input.value = "-" + input.value;
   }
 }
+
+document.getElementById("equal").addEventListener("click", function () {
+  const lastChar = input.value.slice(-1);
+
+  if (input.value === "") {
+    return;
+  }
+  else if(operators.includes(lastChar)){
+    input.value = input.value.slice(0,-1);
+  }
+  else {
+    input.value = eval(input.value);
+  }
+  change(input.value.length);
+});
+
+function change(length) {
+  if (length > 6 && length <= 13) {
+    input.style.fontSize = "40px";
+  }
+  else if (length > 13) {
+    input.style.fontSize = "24px";
+  }
+  else{
+    input.style.fontSize = "70px";
+  }
+
+};
