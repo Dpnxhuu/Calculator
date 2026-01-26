@@ -16,7 +16,7 @@ body{
     height: 100px;
 }
 .parent-container{
-    height: 100%;
+    /* heig; */
     width: 100%;
     background-color: #dbdbdb;
     display: flex;
