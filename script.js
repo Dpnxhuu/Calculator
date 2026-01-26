@@ -66,9 +66,8 @@ function change(length) {
   }
 }
 
-
-function vibrate() {
-  if (navigator.vibrate) {
-    navigator.vibrate(30);
-  }
-}
+document.querySelectorAll("button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    navigator.vibrate?.(30);
+  });
+});
