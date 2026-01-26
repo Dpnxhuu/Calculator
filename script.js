@@ -65,3 +65,10 @@ function change(length) {
     input.style.fontSize = "70px";
   }
 }
+
+
+function vibrate() {
+  if (navigator.vibrate) {
+    navigator.vibrate(30);
+  }
+}
