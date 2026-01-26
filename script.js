@@ -65,9 +65,3 @@ function change(length) {
     input.style.fontSize = "70px";
   }
 }
-
-document.querySelectorAll("button").forEach(btn => {
-  btn.addEventListener("click", () => {
-    navigator.vibrate?.(30);
-  });
-});
