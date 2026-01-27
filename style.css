@@ -32,6 +32,7 @@
     }
     .sub-container {
       height: 600px;
+      border: 2px solid rgba(128, 128, 128, 0.399);
       width: 320px;
       background-color: black;
       border-radius: 40px;
