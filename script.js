@@ -47,12 +47,13 @@ document.getElementById("equal").addEventListener("click", function () {
 
   if (input.value === "") {
     return;
-  } else if (operators.includes(lastChar)) {
-    input.value = input.value.slice(0, -1);
   } else {
+    if(operators.includes(lastChar)) 
+    input.value = input.value.slice(0, -1);
+  
     let expression = input.value.replaceAll("×", "*");
     input.value = eval(expression);
-  }
+  } 
   change(input.value.length);
 });
 
