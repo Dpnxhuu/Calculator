@@ -1,6 +1,6 @@
 const input = document.getElementById("input");
 
-const operators = ["+", "-", "*", "/", "%", "=", "."];
+const operators = ["+", "-", "*", "/", "%", "=", ".","×"];
 function press(val) {
   if (input.value === "" && operators.includes(val)) {
     return;
