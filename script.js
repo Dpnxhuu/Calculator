@@ -17,8 +17,9 @@ function press(val) {
   } else if (input.value === "0" && !operators.includes(val)) {
     input.value = val;
     return;
-  }
-   else {
+  } else if (val === "*") {
+    input.value += "×";
+  } else {
     input.value += val;
   }
 
@@ -33,12 +34,10 @@ function equal(val) {
     input.value = input.value.slice(0, -1);
     change(input.value.length);
   } else if (val === "-") {
-    if(input.value.length === 0)
-    {
+    if (input.value.length === 0) {
       return;
-    }
-    else{
-           input.value = -1 * (parseInt(input.value));
+    } else {
+      input.value = -1 * parseInt(input.value);
     }
   }
 }
@@ -51,7 +50,8 @@ document.getElementById("equal").addEventListener("click", function () {
   } else if (operators.includes(lastChar)) {
     input.value = input.value.slice(0, -1);
   } else {
-    input.value = eval(input.value);
+    let expression = input.value.replaceAll("×", "*");
+    input.value = eval(expression);
   }
   change(input.value.length);
 });
