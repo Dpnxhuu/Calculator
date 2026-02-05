@@ -1,68 +1,102 @@
 const input = document.getElementById("input");
+const buttons = document.querySelector(".btns");
 
-const operators = ["+", "-", "*", "/", "%", "=", ".","×"];
-function press(val) {
-  if (input.value === "" && operators.includes(val)) {
-    return;
-  }
+let expression = "";
 
-  const lastChar = input.value.slice(-1);
+const map = {
+  "×": "*",
+  "÷": "/",
+  "+/-": "-",
+};
 
-  if (operators.includes(lastChar) && operators.includes(val)) {
-    return;
-  } else if (val === "." && input.value.includes(val)) {
-    return;
-  } else if (input.value === "0" && val === "0") {
-    return;
-  } else if (input.value === "0" && !operators.includes(val)) {
-    input.value = val;
-    return;
-  } else if (val === "*") {
-    input.value += "×";
-  } else {
-    input.value += val;
-  }
+buttons.addEventListener("pointerdown", (e) => {
+  const btn = e.target.closest("button");
+  if (!btn) return;
 
-  change(input.value.length);
-}
+  e.preventDefault();
 
-function equal(val) {
-  if (val === "AC") {
+  const uiValue = btn.textContent.trim();
+  const value = map[uiValue] || uiValue;
+
+  if (uiValue === "AC") {
+    expression = "";
     input.value = "";
-    change(0);
-  } else if (val === "backspace") {
-    input.value = input.value.slice(0, -1);
-    change(input.value.length);
-  } else if (val === "-") {
-    if (input.value.length === 0) {
-      return;
-    } else {
-      input.value = -1 * parseInt(input.value);
-    }
-  }
-}
-
-document.getElementById("equal").addEventListener("click", function () {
-  const lastChar = input.value.slice(-1);
-
-  if (input.value === "") {
+    adjustFontSize();
     return;
+  }
+
+  if (btn.classList.contains("backspace")) {
+    expression = expression.slice(0, -1);
+    input.value = expression || "";
+    adjustFontSize();
+    return;
+  }
+
+  if (uiValue === "+/-") {
+    // if (input.value.length === 0) return;
+    // else{
+    //    expression = "-" + expression;
+    //   }
+    return;
+  }
+
+  if (uiValue === "=") {
+    if (!expression) return;
+
+     if (/[+\-*/.]$/.test(expression)) {
+      expression = expression.slice(0, -1);
+    }
+
+    try {
+      const Result = eval(expression);
+      expression = Result.toString();
+      input.value = expression;
+      adjustFontSize();
+    } catch {
+      input.value = "Error";
+      expression = "";
+    }
+    return;
+  }
+
+  //If First char is operator then ---> return;
+  if (/^[+\-*/%]$/.test(value) && expression === "") return;
+
+  //Dot fix
+  if(value === '.')
+  {
+    const digits = expression.split(/[+\-*/%]/).pop();
+    if(digits.includes(".")) return;
+    if(expression === '') expression+=0;
+  }
+
+  //Operator replace
+  const lastChar = expression.slice(-1);
+  if ("+-*/%".includes(value) && "+-*/%".includes(lastChar)) {
+    expression = expression.slice(0, -1);
+  }
+
+  //ZERO FIX
+  if (expression === "0" && /[0-9]/.test(value)) {
+    expression = value;        // 0 → 1 (not 01)
   } else {
-    if(operators.includes(lastChar)) 
-    input.value = input.value.slice(0, -1);
-  
-    let expression = input.value.replaceAll("×", "*");
-    input.value = eval(expression);
-  } 
-  change(input.value.length);
+    expression += value;
+  }
+
+    // DISPLAY 
+  input.value = expression.replace(/\*/g, "×").replace(/\//g, "÷");
+  adjustFontSize();
+
 });
 
-function change(length) {
+function adjustFontSize() {
+  const length = input.value.length;
+
   if (length > 6 && length <= 13) {
     input.style.fontSize = "40px";
   } else if (length > 13) {
     input.style.fontSize = "24px";
   } else {
-    input.style.fontSize = "70px";
+    input.style.fontSize = "64px";
   }
 }
