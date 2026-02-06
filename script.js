@@ -68,14 +68,14 @@ buttons.addEventListener("pointerdown", (e) => {
 
   //Dot fix
   if (value === ".") {
-    const digits = expression.split(/[+\-*/%]/).pop();
-    if (digits.includes(".")) return;
-    if (expression === "") expression += 0;
+    const lastNum = expression.split(/[+\-*/%]/).pop();
+    if (lastNum.includes(".")) return;
+    if (lastNum === "") expression += 0;
   }
 
   //Operator replace
   const lastChar = expression.slice(-1);
-  if ("+-*/%".includes(value) && "+-*/%".includes(lastChar)) {
+  if ("+-*/%.".includes(value) && "+-*/%.".includes(lastChar)) {
     expression = expression.slice(0, -1);
   }
 

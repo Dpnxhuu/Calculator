@@ -1,119 +1,133 @@
 * {
-      padding: 0;
-      margin: 0;
-      box-sizing: border-box;
-    }
-    body {
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100dvh;
-      overflow: hidden;
-      width: 100%;
-      background-color: black;
-    }
-    .container {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      min-height: 100dvh;
-    }
-    .sub-container {
-      height: 520px;
-      border: 2px solid rgba(128, 128, 128, 0.399);
-      width: 320px;
-      background-color: black;
-      border-radius: 40px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 10px;
-      gap: 5px;
-      overflow: hidden;
-    }
-    .input-area {
-      height: 30%;
-      width: 100%;
-      border-radius: 40px;
-      overflow: hidden;
-    }
-    #input {
-      text-align: end;
-      font-size: 70px;
-      width: 100%;
-      border: none;
-      height: 100%;
-      background-color: black;
-      color: #fff;
-      outline: none;
-      padding: 15px 15px;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 
-    }
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100dvh;
+  overflow: hidden;
+  width: 100%;
+  background-color: black;
+}
 
-    .btns {
-      height: 70%;
-      width: 100%;
-      border-radius: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin: 5px;
-    }
-    .btn {
-      height: 65px;
-      width: 65px;
-      border-radius: 50%;
-      font-size: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: none;
-      color: #fff;
-      background: #333333;
-    }
-    .func {
-      background: #a5a5a5;
-      color: #000;
-    }
-    .operator {
-      background-color: #ff9f0a;
-    }
-    button {
-      transition:
-        transform 0.1s ease,
-        box-shadow 0.1s ease;
-    }
-    
-    button:hover {
-      transform: scale(1.05);
-    }
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  min-height: 100dvh;
+}
 
-    /* Mobile tap / click */
-    button:active {
-      transform: scale(0.9);
-    }
-    button {
-      -webkit-tap-highlight-color: transparent;
-    }
-    .no-copy {
-      -webkit-user-select: none; /* Chrome, Safari */
-      -ms-user-select: none; /* Edge */
-      user-select: none; /* Standard */
-    }
-    .fa-solid {
-      color: black;
-    }
-    .fa-xmark {
-      color: white;
-    }
-    @media (hover: none) {
-      button:hover {
-        transform: none;
-      }
-    }
+.sub-container {
+  height: 520px;
+  border: 2px solid rgba(128, 128, 128, 0.399);
+  width: 320px;
+  background-color: black;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 5px;
+  overflow: hidden;
+}
+
+.input-area {
+  height: 30%;
+  width: 100%;
+  border-radius: 40px;
+  overflow: hidden;
+}
+
+#input {
+  text-align: end;
+  font-size: 70px;
+  width: 100%;
+  border: none;
+  height: 100%;
+  background-color: black;
+  color: #fff;
+  outline: none;
+  padding: 15px 15px;
+
+}
+
+.btns {
+  height: 70%;
+  width: 100%;
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 5px;
+}
+
+.btn {
+  touch-action: manipulation;
+  height: 65px;
+  width: 65px;
+  border-radius: 50%;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  color: #fff;
+  background: #333333;
+}
+
+.func {
+  background: #a5a5a5;
+  color: #000;
+}
+
+.operator {
+  background-color: #ff9f0a;
+}
+
+button {
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.1s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* Mobile tap / click */
+button:active {
+  transform: scale(0.9);
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.no-copy {
+  -webkit-user-select: none;
+  /* Chrome, Safari */
+  -ms-user-select: none;
+  /* Edge */
+  user-select: none;
+  /* Standard */
+}
+
+.fa-solid {
+  color: black;
+}
+
+@media (hover: none) {
+  button:hover {
+    transform: none;
+  }
+}
