@@ -33,17 +33,21 @@ buttons.addEventListener("pointerdown", (e) => {
   }
 
   if (uiValue === "+/-") {
-    // if (input.value.length === 0) return;
-    // else{
-    //    expression = "-" + expression;
-    //   }
+    if (expression === "") return;
+
+    else if (expression.startsWith("-"))
+    expression = expression.slice(1); // - hatao
+
+    else expression = "-" + expression; // start me - add
+
+    input.value = expression.replace(/\*/g, "×").replace(/\//g, "÷");
     return;
   }
 
   if (uiValue === "=") {
     if (!expression) return;
 
-     if (/[+\-*/.]$/.test(expression)) {
+    if (/[+\-*/.]$/.test(expression)) {
       expression = expression.slice(0, -1);
     }
 
@@ -63,11 +67,10 @@ buttons.addEventListener("pointerdown", (e) => {
   if (/^[+\-*/%]$/.test(value) && expression === "") return;
 
   //Dot fix
-  if(value === '.')
-  {
+  if (value === ".") {
     const digits = expression.split(/[+\-*/%]/).pop();
-    if(digits.includes(".")) return;
-    if(expression === '') expression+=0;
+    if (digits.includes(".")) return;
+    if (expression === "") expression += 0;
   }
 
   //Operator replace
@@ -78,15 +81,14 @@ buttons.addEventListener("pointerdown", (e) => {
 
   //ZERO FIX
   if (expression === "0" && /[0-9]/.test(value)) {
-    expression = value;        // 0 → 1 (not 01)
+    expression = value; // 0 → 1 (not 01)
   } else {
     expression += value;
   }
 
-    // DISPLAY 
+  // DISPLAY
   input.value = expression.replace(/\*/g, "×").replace(/\//g, "÷");
   adjustFontSize();
-
 });
 
 function adjustFontSize() {
