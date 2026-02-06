@@ -1,3 +1,3 @@
 # Calculator
 Built a Calculator using HTML CSS JS
-<h1>Live Demo: https://calculator-dpnshuu.netlify.app/</h1>
+<h1>Live Demo: https://calculator-by-dpnshuu.vercel.app/</h1>
