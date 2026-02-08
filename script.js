@@ -27,7 +27,8 @@ buttons.addEventListener("pointerdown", (e) => {
 
   if (btn.classList.contains("backspace")) {
     expression = expression.slice(0, -1);
-    input.value = expression || "";
+    // input.value = expression || "";
+    input.value = expression.replace(/\*/g, "×").replace(/\//g, "÷")
     adjustFontSize();
     return;
   }
@@ -47,7 +48,7 @@ buttons.addEventListener("pointerdown", (e) => {
   if (uiValue === "=") {
     if (!expression) return;
 
-    if (/[+\-*/.]$/.test(expression)) {
+    if (/[+\-*/.%]$/.test(expression)) {
       expression = expression.slice(0, -1);
     }
 
@@ -83,6 +84,7 @@ buttons.addEventListener("pointerdown", (e) => {
   if (expression === "0" && /[0-9]/.test(value)) {
     expression = value; // 0 → 1 (not 01)
   } else {
+    if(input.value.length > 20) return;
     expression += value;
   }
 
@@ -93,10 +95,10 @@ buttons.addEventListener("pointerdown", (e) => {
 
 function adjustFontSize() {
   const length = input.value.length;
-
-  if (length > 6 && length <= 13) {
+  
+  if (length > 6 && length < 11) {
     input.style.fontSize = "40px";
-  } else if (length > 13) {
+  } else if (length > 10) {
     input.style.fontSize = "24px";
   } else {
     input.style.fontSize = "64px";
