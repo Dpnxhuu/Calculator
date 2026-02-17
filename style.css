@@ -112,19 +112,6 @@ button:active {
   transform: scale(0.9);
 }
 
-button {
-  -webkit-tap-highlight-color: transparent;
-}
-
-.no-copy {
-  -webkit-user-select: none;
-  /* Chrome, Safari */
-  -ms-user-select: none;
-  /* Edge */
-  user-select: none;
-  /* Standard */
-}
-
 .fa-solid {
   color: black;
 }
